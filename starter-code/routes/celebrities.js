@@ -12,6 +12,28 @@ router.get("/", async(req, res, next) => {
   }
   });
 
+  
+  router.get("/new",(req, res, next) => {
+    try{
+      res.render("celebrities/new");
+    } catch (err) {
+      next (err);
+    }
+  });
+
+  router.post("/", async(req, res, next) => {
+    const newCelebrity = { ... req.body};
+    console.log(newCelebrity);
+
+    try{
+      await CelebrityModel.create(newCelebrity);
+      res.redirect("/celebrities/");
+    } catch (err) {
+      next (err);
+      res.redirect("/celebrities/new"); 
+    }
+  });
+  
   router.get("/:id", async(req, res, next) => {
     try{
       const celebrity = await CelebrityModel.findById(req.params.id);
@@ -20,5 +42,6 @@ router.get("/", async(req, res, next) => {
       next (err);
     }
     });
-  
-module.exports = router;
+
+
+  module.exports = router;
