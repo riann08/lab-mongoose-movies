@@ -1,3 +1,6 @@
+*{
+ box-sizing: border-box;
+}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +8,19 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+#main-nav{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+#main-nav > a{
+  text-decoration: none;
+  margin: 50px;
+  border: olive 2px dotted;
+  font-size: larger;display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
